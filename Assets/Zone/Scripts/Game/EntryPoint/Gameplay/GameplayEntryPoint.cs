@@ -19,7 +19,7 @@ namespace Zone
             var gameplayEnterParams = sceneEnterParams.As<GameplayEnterParams>();
 
             m_container = parentContainer;
-            Debug.Log("Init Gameplay");
+
             GameplayServiceRegistration.RegisterService(m_container, gameplayEnterParams);
             GameplayViewModelRegistration.RegisterViewModel(m_container);
             GameplayViewBind.LoadAndBindView(m_container);

@@ -47,7 +47,7 @@ namespace Zone
 
         private void Init()
         {
-            var sceneService = m_rootContainer.Resolve<SceneService>();
+            var sceneService = m_rootContainer.Resolve<ISceneService>();
             sceneService.LoadSceneEvent += OnLoadScene;
 
             if (sceneService.GetCurrentSceneName() != SceneService.BOOTSTRAP_SCENE)
@@ -65,7 +65,7 @@ namespace Zone
 
         private void RegisterViewModel(DIContainer container)
         {
-            container.RegisterSingleton(factory => new SceneService());
+            container.RegisterSingleton<ISceneService>(factory => new SceneService());
         }
 
 
@@ -81,19 +81,24 @@ namespace Zone
 
         private void OnLoadScene(Scene scene, LoadSceneMode mode, SceneEnterParams sceneEnterParams)
         {
+            var sceneService = m_rootContainer.Resolve<ISceneService>();
             var sceneName = scene.name;
 
             if (sceneName.Equals(SceneService.BOOTSTRAP_SCENE))
-                LoadingBootstrap();
+                LoadingBootstrap(sceneService);
             else if (sceneName.Equals(SceneService.MAIN_MENU_SCENE))
-                m_coroutines.StartCoroutine(LoadingMainMenu(sceneEnterParams.As<MainMenuEnterParams>()));
+                m_coroutines.StartCoroutine(LoadingMainMenu(sceneService, sceneEnterParams.As<MainMenuEnterParams>()));
             else if (sceneName.Equals(SceneService.GAMEPLAY_SCENE))
-                m_coroutines.StartCoroutine(LoadingGameplay(sceneEnterParams.As<GameplayEnterParams>()));
+                m_coroutines.StartCoroutine(LoadingGameplay(sceneService, sceneEnterParams.As<GameplayEnterParams>()));
         }
 
-        private IEnumerator LoadingMainMenu(MainMenuEnterParams mainMenuEnterParams)
+        private void LoadingBootstrap(ISceneService sceneService)
         {
-            var sceneService = m_rootContainer.Resolve<SceneService>();
+            sceneService.LoadBootstrap();
+        }
+
+        private IEnumerator LoadingMainMenu(ISceneService sceneService, MainMenuEnterParams mainMenuEnterParams)
+        {
             var mainMenuContainer = new DIContainer(m_rootContainer);
 
             var mainMenuEntyPoint = UnityExtention.GetEntryPoint<MainMenuEntryPoint>();
@@ -102,16 +107,8 @@ namespace Zone
             sceneService.StartScene(mainMenuEntyPoint, m_coroutines);
         }
 
-        private void LoadingBootstrap()
+        private IEnumerator LoadingGameplay(ISceneService sceneService, GameplayEnterParams gameplayEnterParams) 
         {
-            var sceneService = m_rootContainer.Resolve<SceneService>();
-            sceneService.LoadBootstrap();
-
-        }
-
-        private IEnumerator LoadingGameplay(GameplayEnterParams gameplayEnterParams) 
-        {
-            var sceneService = m_rootContainer.Resolve<SceneService>();
             var gameplayContainer = new DIContainer(m_rootContainer);
 
             var gameplayEntryPoint = UnityExtention.GetEntryPoint<GameplayEntryPoint>();

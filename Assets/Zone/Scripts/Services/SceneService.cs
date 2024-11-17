@@ -9,14 +9,10 @@ using System.Collections;
 using UnityEngine.Events;
 using UnityEngine;
 using SkyForge;
-using System;
-
-
 
 namespace Zone.Services
 {
-
-    public class SceneService : IDisposable
+    public class SceneService : ISceneService
     {
         public const string BOOTSTRAP_SCENE = "Bootstrap";
         public const string MAIN_MENU_SCENE = "MainMenu";

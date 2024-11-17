@@ -18,7 +18,7 @@ namespace Zone
         {
             var mainMenuSceneEnterParams = sceneEnterParams.As<MainMenuEnterParams>();
             m_container = parentContainer;
-            Debug.Log("Init MainMenu");
+
             MainMenuServiceRegistration.RegisterService(m_container, mainMenuSceneEnterParams);
             MainMenuViewModelRegistration.RegisterViewModel(m_container);
             MainMenuViewBind.LoadAndBindView(m_container);
