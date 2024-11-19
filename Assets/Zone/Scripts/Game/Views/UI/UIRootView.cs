@@ -2,11 +2,9 @@
    Copyright SkyForge Corporation. All Rights Reserved.
 \**************************************************************************/
 
-using SkyForge.Infrastructure.MVVM;
-
 namespace Zone
 {
-    public class UIRootView : View
+    public class UIRootView : UIView
     {
         
     }

@@ -18,6 +18,7 @@ namespace Zone
 
         private DIContainer m_rootContainer;
         private Coroutines m_coroutines;
+        private UIRootView m_uIRootView;
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
         private static void Start()
@@ -71,12 +72,19 @@ namespace Zone
 
         private void RegisterViewModel(DIContainer container)
         {
-            
+            container.RegisterSingleton<IUIRootViewModel>(factory => new UIRootViewModel());
         }
 
         private void BindView(DIContainer contaier)
         {
+            var loadService = contaier.Resolve<ILoadService>();
 
+            //bind UIRootView
+            var uIRootViewPrefab = loadService.LoadPrefab<UIRootView>(LoadService.PREFAB_UI_ROOT);
+            var uIRootViewModel = contaier.Resolve<IUIRootViewModel>();
+            m_uIRootView = Object.Instantiate(uIRootViewPrefab);
+            Object.DontDestroyOnLoad(m_uIRootView);
+            m_uIRootView.Bind(uIRootViewModel);
         }
 
         private void OnLoadScene(Scene scene, LoadSceneMode mode, SceneEnterParams sceneEnterParams)
@@ -95,26 +103,33 @@ namespace Zone
         private void LoadingBootstrap(ISceneService sceneService)
         {
             sceneService.LoadBootstrap();
+            var uIRootViewModel = m_rootContainer.Resolve<IUIRootViewModel>();
+            uIRootViewModel.ShowLoadingScreen();
         }
 
         private IEnumerator LoadingMainMenu(ISceneService sceneService, MainMenuEnterParams mainMenuEnterParams)
         {
+            var uIRootViewModel = m_rootContainer.Resolve<IUIRootViewModel>();
             var mainMenuContainer = new DIContainer(m_rootContainer);
 
             var mainMenuEntyPoint = UnityExtention.GetEntryPoint<MainMenuEntryPoint>();
             yield return mainMenuEntyPoint.Intialization(mainMenuContainer, mainMenuEnterParams);
 
             sceneService.StartScene(mainMenuEntyPoint, m_coroutines);
+
+            uIRootViewModel.HideLoadingScreen();
         }
 
         private IEnumerator LoadingGameplay(ISceneService sceneService, GameplayEnterParams gameplayEnterParams) 
         {
+            var uIRootViewModel = m_rootContainer.Resolve<IUIRootViewModel>();
             var gameplayContainer = new DIContainer(m_rootContainer);
 
             var gameplayEntryPoint = UnityExtention.GetEntryPoint<GameplayEntryPoint>();
             yield return gameplayEntryPoint.Intialization(gameplayContainer, gameplayEnterParams);
 
             sceneService.StartScene(gameplayEntryPoint, m_coroutines);
+            uIRootViewModel.HideLoadingScreen();
         }
 
     }

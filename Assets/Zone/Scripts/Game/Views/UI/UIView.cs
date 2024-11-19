@@ -6,11 +6,8 @@ using SkyForge.Infrastructure.MVVM;
 
 namespace Zone
 {
-    public interface IUIRootViewModel : IViewModel
+    public class UIView : View
     {
-        void ShowLoadingScreen();
-        void HideLoadingScreen();
-        void AttachSceneUIStatic(UIView sceneUIStatic, bool newScene);
-        void AttachSceneUIDynamic(UIView sceneUIDynamic, bool newScene);
+
     }
 }

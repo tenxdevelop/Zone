@@ -112,6 +112,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5503513099360048608}
+  - component: {fileID: 9105717432420543808}
   m_Layer: 0
   m_Name: LoadingScreen
   m_TagString: Untagged
@@ -119,21 +120,58 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5503513099360048608
-Transform:
+--- !u!224 &5503513099360048608
+RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 729876748862991077}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -961.1933, y: -538.1288, z: 0.07792854}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 7457341121437372520}
   m_Father: {fileID: 8769479148620144447}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &9105717432420543808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 729876748862991077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7da58a32bc0e7ef4084c064e189e9b57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_viewModelTypeFullName: Zone.UIRootViewModel
+  m_propertyName: IsOpenLoadingScreen
+  m_event:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 729876748862991077}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  m_eventWithAnalitics:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &2014283679565467655
 GameObject:
   m_ObjectHideFlags: 0
@@ -143,6 +181,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3489599601333617066}
+  - component: {fileID: 4530297197036666497}
+  - component: {fileID: 3847543808343511558}
   m_Layer: 0
   m_Name: UIContainerDynamic
   m_TagString: Untagged
@@ -169,6 +209,140 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &4530297197036666497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2014283679565467655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e16829c81664144fbfa59b035dc5e1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_viewModelTypeFullName: Zone.UIRootViewModel
+  m_propertyName: UIDynamicContainer
+  m_eventAdded:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3847543808343511558}
+        m_TargetAssemblyTypeName: SkyForge.Infrastructure.UISceneAttacher, Assembly-CSharp
+        m_MethodName: AttachSceneUI
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  m_eventRemoved:
+    m_PersistentCalls:
+      m_Calls: []
+  m_eventClear:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3847543808343511558}
+        m_TargetAssemblyTypeName: SkyForge.Infrastructure.UISceneAttacher, Assembly-CSharp
+        m_MethodName: ClearSceneUI
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &3847543808343511558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2014283679565467655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 105e7ff6d44ad23449f05ffa540a27c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &2137965642889663509
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7457341121437372520}
+  - component: {fileID: 1007647963864696842}
+  - component: {fileID: 2835201642229706580}
+  m_Layer: 0
+  m_Name: BackGround
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &7457341121437372520
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2137965642889663509}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5503513099360048608}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &1007647963864696842
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2137965642889663509}
+  m_CullTransparentMesh: 1
+--- !u!114 &2835201642229706580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2137965642889663509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: fc83d12a843de5b499ea08cd247789c9, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &6128319803644508327
 GameObject:
   m_ObjectHideFlags: 0
@@ -243,10 +417,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -495,6 +669,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8033566387923786815}
+  - component: {fileID: 5090535576145399845}
   m_Layer: 0
   m_Name: UIRoot
   m_TagString: Untagged
@@ -521,6 +696,26 @@ Transform:
   - {fileID: 8855655338870353588}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5090535576145399845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8472123679244107421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ec4d43d5c1e99f4fbc918a7fd56d38f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_viewModelTypeFullName: Zone.UIRootViewModel
+  m_viewModelPropertyName: 
+  m_isParentView: 1
+  m_subViews: []
+  m_childBinders:
+  - {fileID: 4530297197036666497}
+  - {fileID: 2097665960218428937}
+  - {fileID: 9105717432420543808}
 --- !u!1 &9221643336347546065
 GameObject:
   m_ObjectHideFlags: 0
@@ -530,6 +725,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5765921741070661757}
+  - component: {fileID: 2097665960218428937}
+  - component: {fileID: 3731440367253010195}
   m_Layer: 0
   m_Name: UIContainerStatic
   m_TagString: Untagged
@@ -556,3 +753,62 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2097665960218428937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9221643336347546065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e16829c81664144fbfa59b035dc5e1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_viewModelTypeFullName: Zone.UIRootViewModel
+  m_propertyName: UIStaticContainer
+  m_eventAdded:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3731440367253010195}
+        m_TargetAssemblyTypeName: SkyForge.Infrastructure.UISceneAttacher, Assembly-CSharp
+        m_MethodName: AttachSceneUI
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  m_eventRemoved:
+    m_PersistentCalls:
+      m_Calls: []
+  m_eventClear:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3731440367253010195}
+        m_TargetAssemblyTypeName: SkyForge.Infrastructure.UISceneAttacher, Assembly-CSharp
+        m_MethodName: ClearSceneUI
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &3731440367253010195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9221643336347546065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 105e7ff6d44ad23449f05ffa540a27c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
