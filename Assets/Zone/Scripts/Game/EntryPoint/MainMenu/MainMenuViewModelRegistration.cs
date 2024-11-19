@@ -10,7 +10,7 @@ namespace Zone
     {
         public static void RegisterViewModel(DIContainer container)
         {
-
+            container.RegisterSingleton<IUIMainMenuRootViewModel>(factory => new UIMainMenuRootViewModel(factory));
         }
     }
 }

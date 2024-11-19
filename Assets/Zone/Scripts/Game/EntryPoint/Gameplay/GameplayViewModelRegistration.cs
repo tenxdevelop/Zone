@@ -10,7 +10,7 @@ namespace Zone
     {
         public static void RegisterViewModel(DIContainer container)
         {
-
+            container.RegisterSingleton<IUIGameplayRootViewModel>(factory => new UIGameplayRootViewModel(factory));
         }
     }
 }

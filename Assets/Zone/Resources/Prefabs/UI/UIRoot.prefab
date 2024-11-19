@@ -119,7 +119,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5503513099360048608
 RectTransform:
   m_ObjectHideFlags: 0
@@ -204,10 +204,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 8996806924601054296}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &4530297197036666497
 MonoBehaviour:
@@ -533,7 +533,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8855655338870353588}
   - component: {fileID: 8806315117194732308}
-  - component: {fileID: 2478175388882888852}
   - component: {fileID: 2955370275689971820}
   m_Layer: 0
   m_Name: UICamera
@@ -608,14 +607,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &2478175388882888852
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8017080366635313069}
-  m_Enabled: 1
 --- !u!114 &2955370275689971820
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -748,10 +739,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 8769479148620144447}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2097665960218428937
 MonoBehaviour:

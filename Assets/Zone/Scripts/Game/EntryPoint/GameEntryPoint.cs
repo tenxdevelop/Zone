@@ -9,7 +9,6 @@ using Zone.Services;
 using UnityEngine;
 using SkyForge;
 
-
 namespace Zone
 {
     public sealed class GameEntryPoint

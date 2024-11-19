@@ -22,6 +22,8 @@ namespace Zone
 
             GameplayServiceRegistration.RegisterService(m_container, gameplayEnterParams);
             GameplayViewModelRegistration.RegisterViewModel(m_container);
+            m_container.RegisterSingleton<IUIGameplayMenuViewModel>(factory => new UIGameplayMenuViewModel(LoadMainMenuParams));
+
             GameplayViewBind.LoadAndBindView(m_container);
             yield return null;
         }
@@ -36,7 +38,8 @@ namespace Zone
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                LoadMainMenuParams(null);
+                var uIGameplayMenuViewModel = m_container.Resolve<IUIGameplayMenuViewModel>();
+                uIGameplayMenuViewModel.OpenMenu(this);
             }
         }
 

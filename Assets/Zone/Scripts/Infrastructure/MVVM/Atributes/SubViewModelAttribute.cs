@@ -12,6 +12,8 @@ namespace SkyForge.Infrastructure.MVVM
         public Type AcctualType { get; private set; }
         public SubViewModelAttribute(Type acctualType)
         {
+            if (!typeof(IViewModel).IsAssignableFrom(acctualType))
+                UnityEngine.Debug.LogError($"Can't find SubViewModel: {acctualType.Name}");
             AcctualType = acctualType;
         }
     }

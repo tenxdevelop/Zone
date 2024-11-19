@@ -21,6 +21,8 @@ namespace Zone
 
             MainMenuServiceRegistration.RegisterService(m_container, mainMenuSceneEnterParams);
             MainMenuViewModelRegistration.RegisterViewModel(m_container);
+            m_container.RegisterSingleton<IUIMainMenuViewModel>(factory => new UIMainMenuViewModel(LoadGameplayEnterParams));
+
             MainMenuViewBind.LoadAndBindView(m_container);
 
             yield return null;
@@ -29,14 +31,6 @@ namespace Zone
         public IObservable<SceneExitParams> Run()
         {
             return m_sceneExitParams;
-        }
-
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                LoadGameplayEnterParams(null);
-            }
         }
 
         private void LoadGameplayEnterParams(object sender)
