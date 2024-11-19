@@ -41,7 +41,7 @@ namespace Zone
             m_coroutines = new GameObject("[COROUTINES]").AddComponent<Coroutines>();
             Object.DontDestroyOnLoad(m_coroutines.gameObject);
             m_rootContainer.RegisterInstance(m_coroutines);
-            //Load Settings
+            //Load config settings
 
         }
 
@@ -63,15 +63,15 @@ namespace Zone
             m_coroutines.StartCoroutine(sceneService.LoadMainMenu(mainMenuEnterParams));
         }
 
-        private void RegisterViewModel(DIContainer container)
+        private void RegisterService(DIContainer container)
         {
+            container.RegisterSingleton<ILoadService>(factory => new LoadService());
             container.RegisterSingleton<ISceneService>(factory => new SceneService());
         }
 
-
-        private void RegisterService(DIContainer container)
+        private void RegisterViewModel(DIContainer container)
         {
-
+            
         }
 
         private void BindView(DIContainer contaier)
