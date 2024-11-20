@@ -21,8 +21,8 @@ namespace SkyForge.Infrastructure
 
         protected override void Disposed()
         {
+            m_instance?.Dispose();
             base.Disposed();
-            m_instance.Dispose();
         }
 
     }

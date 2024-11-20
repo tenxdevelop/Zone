@@ -2,14 +2,16 @@
    Copyright SkyForge Corporation. All Rights Reserved.
 \**************************************************************************/
 
-using System;
-
 namespace SkyForge.Infrastructure.Command
 {
-    public interface ICommandProcessor : IDisposable
+    public abstract class Service
     {
-        void RegisterCommandHandler<TCommand>(ICommandHandler<TCommand> handler) where TCommand : ICommand;
+        protected ICommandProcessor m_commandProcessor;
 
-        bool Process<TCommand>(TCommand command) where TCommand : ICommand;
+        public Service(ICommandProcessor commandProcessor)
+        {
+            m_commandProcessor = commandProcessor;
+        }
+
     }
 }

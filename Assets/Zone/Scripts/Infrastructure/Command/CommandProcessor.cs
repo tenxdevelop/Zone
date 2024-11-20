@@ -16,6 +16,11 @@ namespace SkyForge.Infrastructure.Command
             
         }
 
+        public void Dispose()
+        {
+            
+        }
+
         public bool Process<TCommand>(TCommand command) where TCommand : ICommand
         {
             var typeCommand = typeof(TCommand);

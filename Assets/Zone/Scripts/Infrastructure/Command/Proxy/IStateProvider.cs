@@ -6,7 +6,7 @@ using SkyForge.Infrastructure.Reactive;
 
 namespace SkyForge.Infrastructure.Proxy
 {
-    public interface IStateProvider<TProxy> where TProxy : IProxy
+    public interface IStateProvider<TProxy> : System.IDisposable where TProxy : IProxy
     {
         TProxy ProxyState { get; }
 

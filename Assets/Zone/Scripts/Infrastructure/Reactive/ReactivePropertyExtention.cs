@@ -2,6 +2,8 @@
    Copyright SkyForge Corporation. All Rights Reserved.
 \**************************************************************************/
 
+using UnityEngine;
+
 namespace SkyForge.Infrastructure.Reactive
 {
     public static class ReactivePropertyExtention
@@ -44,6 +46,16 @@ namespace SkyForge.Infrastructure.Reactive
         }
 
         public static void UpdateValue(this ReactiveProperty<string> reactiveProperty, string value)
+        {
+            reactiveProperty.SetValue(null, reactiveProperty.Value + value);
+        }
+
+        public static void UpdateValue(this ReactiveProperty<Vector3> reactiveProperty, object sender, Vector3 value)
+        {
+            reactiveProperty.SetValue(sender, reactiveProperty.Value + value);
+        }
+
+        public static void UpdateValue(this ReactiveProperty<Vector3> reactiveProperty, Vector3 value)
         {
             reactiveProperty.SetValue(null, reactiveProperty.Value + value);
         }

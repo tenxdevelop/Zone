@@ -42,7 +42,9 @@ namespace Zone
             Object.DontDestroyOnLoad(m_coroutines.gameObject);
             m_rootContainer.RegisterInstance(m_coroutines);
             //Load config settings
+            var gameStateProvider = new PlayerPrefsGameStateProvider();
 
+            m_rootContainer.RegisterInstance<IGameStateProvider>(gameStateProvider);
         }
 
         private void Init()
@@ -74,13 +76,13 @@ namespace Zone
             container.RegisterSingleton<IUIRootViewModel>(factory => new UIRootViewModel());
         }
 
-        private void BindView(DIContainer contaier)
+        private void BindView(DIContainer container)
         {
-            var loadService = contaier.Resolve<ILoadService>();
+            var loadService = container.Resolve<ILoadService>();
 
             //bind UIRootView
             var uIRootViewPrefab = loadService.LoadPrefab<UIRootView>(LoadService.PREFAB_UI_ROOT);
-            var uIRootViewModel = contaier.Resolve<IUIRootViewModel>();
+            var uIRootViewModel = container.Resolve<IUIRootViewModel>();
             m_uIRootView = Object.Instantiate(uIRootViewPrefab);
             Object.DontDestroyOnLoad(m_uIRootView);
             m_uIRootView.Bind(uIRootViewModel);
@@ -124,6 +126,8 @@ namespace Zone
             var uIRootViewModel = m_rootContainer.Resolve<IUIRootViewModel>();
             var gameplayContainer = new DIContainer(m_rootContainer);
 
+            var gameStateProvider = m_rootContainer.Resolve<IGameStateProvider>();
+            gameStateProvider.LoadState();
             var gameplayEntryPoint = UnityExtention.GetEntryPoint<GameplayEntryPoint>();
             yield return gameplayEntryPoint.Intialization(gameplayContainer, gameplayEnterParams);
 
