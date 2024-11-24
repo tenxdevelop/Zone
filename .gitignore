@@ -5,6 +5,10 @@
 /[Aa]ssets/Zone/[Ss]cripts/[Tt]est/
 /[Aa]ssets/Zone/[Ss]cripts/[Tt]est.meta
 
+#ignore Google config
+GoogleConfig.json
+
+
 # Unity Ignore Deafult
 # This .gitignore file should be placed at the root of your Unity project directory
 #

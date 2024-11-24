@@ -1,0 +1,7 @@
+
+namespace Zone.Gameplay;
+
+table PlayerSettings
+{
+    speed: float;
+}

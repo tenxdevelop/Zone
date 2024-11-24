@@ -1,0 +1,9 @@
+include "Gameplay/PlayerSettings.fbs";
+
+namespace  Zone;
+
+table GameSettings {
+    PlayerSettings: Gameplay.PlayerSettings;
+}
+
+root_type GameSettings;
