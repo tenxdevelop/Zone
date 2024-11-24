@@ -8,7 +8,7 @@ using System.IO;
 
 namespace SkyForge.Infrastructure.FlatBuffers
 {
-    public abstract class ProjectImporter<TMainSettings, TSettings> : GoogleSheetsImporter where TMainSettings : struct
+    public abstract class ProjectGoogleSheetImporter<TMainSettings, TSettings> : GoogleSheetsImporter where TMainSettings : struct
     {
         public string SheetName { get; private set; }
 
@@ -22,7 +22,7 @@ namespace SkyForge.Infrastructure.FlatBuffers
 
         protected string localSettingsFilePath => Path.Combine(ImportConstants.GetSettingFolder(), settingsFileName);
 
-        protected ProjectImporter(IFlatBufferPacker<TMainSettings, TSettings> flatbufferPacker, IImportConstants importConstants, 
+        protected ProjectGoogleSheetImporter(IFlatBufferPacker<TMainSettings, TSettings> flatbufferPacker, IImportConstants importConstants, 
                                   string spreadSheetId, string sheetName) : base(spreadSheetId)
         {
             ImportConstants = importConstants;

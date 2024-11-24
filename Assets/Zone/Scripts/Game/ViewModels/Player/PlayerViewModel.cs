@@ -4,6 +4,7 @@
 
 using SkyForge.Infrastructure.Reactive;
 using UnityEngine;
+using Zone.Gameplay;
 
 namespace Zone
 {
@@ -12,9 +13,12 @@ namespace Zone
         public ReactiveProperty<Vector3> Position { get; private set; }
 
         private readonly IPlayerService m_playerService;
-        public PlayerViewModel(IPlayerStateProxy playerState, IPlayerService playerService)
+        private readonly PlayerSettings m_playerSettings;
+
+        public PlayerViewModel(PlayerSettings playerSettings, IPlayerStateProxy playerState, IPlayerService playerService)
         {
             Position = playerState.Position;
+            m_playerSettings = playerSettings;
             m_playerService = playerService;
         }
 
@@ -26,7 +30,7 @@ namespace Zone
 
         public void Move(Vector3 direction)
         {
-            m_playerService.MovePlayer(direction, 30f);
+            m_playerService.MovePlayer(direction, m_playerSettings.Speed);
         }
     }
 }

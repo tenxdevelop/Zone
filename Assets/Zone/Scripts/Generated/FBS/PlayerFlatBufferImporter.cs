@@ -9,7 +9,7 @@ using System;
 
 namespace Zone
 {
-    public class PlayerFlatBufferImporter : ProjectImporter<GameSettings, GameSettingsT>, IImporter<GameSettings, GameSettingsT>
+    public class PlayerFlatBufferImporter : ProjectGoogleSheetImporter<GameSettings, GameSettingsT>, IImporter<GameSettings, GameSettingsT>
     {
         private const string SPEED_HEAD = "Speed";
         protected override string settingsFileName => "PlayerSettings.bytes";

@@ -22,9 +22,6 @@ namespace Zone
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
         private static void Start()
         {
-            Application.targetFrameRate = 144;
-
-
             m_instance = new GameEntryPoint();
             m_instance.Init();
         }
@@ -41,7 +38,13 @@ namespace Zone
             m_coroutines = new GameObject("[COROUTINES]").AddComponent<Coroutines>();
             Object.DontDestroyOnLoad(m_coroutines.gameObject);
             m_rootContainer.RegisterInstance(m_coroutines);
+            
             //Load config settings
+            var settingsProvider = new SettingsProvider(m_rootContainer.Resolve<ILoadService>());
+            m_rootContainer.RegisterInstance<ISettingsProvider>(settingsProvider);
+
+            Application.targetFrameRate = settingsProvider.ApplicationSettings.MaxFPS;
+
             var gameStateProvider = new PlayerPrefsGameStateProvider();
 
             m_rootContainer.RegisterInstance<IGameStateProvider>(gameStateProvider);
@@ -126,8 +129,12 @@ namespace Zone
             var uIRootViewModel = m_rootContainer.Resolve<IUIRootViewModel>();
             var gameplayContainer = new DIContainer(m_rootContainer);
 
+            var settingsProvider = m_rootContainer.Resolve<ISettingsProvider>();
+            settingsProvider.LoadGameSettings().Wait();
+
             var gameStateProvider = m_rootContainer.Resolve<IGameStateProvider>();
             gameStateProvider.LoadState();
+            
             var gameplayEntryPoint = UnityExtention.GetEntryPoint<GameplayEntryPoint>();
             yield return gameplayEntryPoint.Intialization(gameplayContainer, gameplayEnterParams);
 

@@ -30,7 +30,7 @@ namespace SkyForge.Infrastructure.FlatBuffers
 
             LoadOtherImporters(resultSettings, allImporters);
 
-            SettingsFileUtils.SaveSettings(importer.FlatBufferPacker, resultSettings, importer.ImportConstants.GetSettingFolder(), importer.ImportConstants.GetSettingsFileName());
+            SettingsFileUtils.SaveSettings(importer.FlatBufferPacker, resultSettings, importer.ImportConstants.GetResourcesFolder(), importer.ImportConstants.GetSettingsFileName());
             Debug.Log($"{importer.ImportConstants.GetSettingsFileName()} has been updated and saved");
         }
 
@@ -50,7 +50,7 @@ namespace SkyForge.Infrastructure.FlatBuffers
 
             LoadOtherImporters(resultSettings, allImporters);
 
-            SettingsFileUtils.SaveSettings(flatBufferPacker, resultSettings, importConstants.GetSettingFolder(), importConstants.GetSettingsFileName());
+            SettingsFileUtils.SaveSettings(flatBufferPacker, resultSettings, importConstants.GetResourcesFolder(), importConstants.GetSettingsFileName());
             Debug.Log($"{importConstants.GetSettingsFileName()} has been updated and saved");
 
         }

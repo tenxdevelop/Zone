@@ -18,7 +18,8 @@ namespace Zone
 
             container.RegisterInstance<ICommandProcessor>(commandProcessor);
 
-            container.RegisterSingleton<IPlayerService>(factory => new PlayerService(gameState.PlayerState.Value, commandProcessor));
+            container.RegisterSingleton<IPlayerService>(factory => new PlayerService(factory.Resolve<ISettingsProvider>().GameSettings.PlayerSettings.Value, 
+                                                                                     gameState.PlayerState.Value, commandProcessor));
         }
     }
 }

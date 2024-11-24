@@ -5,6 +5,7 @@
 using SkyForge.Infrastructure.Reactive;
 using SkyForge.Infrastructure.Command;
 using UnityEngine;
+using Zone.Gameplay;
 
 namespace Zone
 {
@@ -14,9 +15,9 @@ namespace Zone
 
         private ReactiveProperty<IPlayerViewModel> m_plyaer;
 
-        public PlayerService(IPlayerStateProxy playerState, ICommandProcessor commandProcessor) : base(commandProcessor)
+        public PlayerService(PlayerSettings playerSettings, IPlayerStateProxy playerState, ICommandProcessor commandProcessor) : base(commandProcessor)
         {
-            m_plyaer = new ReactiveProperty<IPlayerViewModel>(new PlayerViewModel(playerState, this));
+            m_plyaer = new ReactiveProperty<IPlayerViewModel>(new PlayerViewModel(playerSettings, playerState, this));
         }
 
         public bool MovePlayer(Vector3 direction, float speed)
